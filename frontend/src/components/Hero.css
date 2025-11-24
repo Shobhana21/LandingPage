@@ -1,0 +1,85 @@
+.hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.shop-now-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background: #1d4ed8;
+}
+
+.hero-image img {
+  width: 420px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-image img {
+    width: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-image img {
+    width: 260px;
+  }
+}

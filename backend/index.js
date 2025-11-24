@@ -12,8 +12,12 @@ app.use(express.json());
 // DB connect
 connectDB();
 
-// Routes
-app.use("/", productRoutes);
+app.get("/test", (req, res) => {
+  res.send("Backend is working!");
+});
+
+// Mount routes
+app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

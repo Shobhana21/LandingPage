@@ -1,22 +1,39 @@
 const express = require("express");
-const router = express.Router();
 const Product = require("../models/Product");
 
-// GET /products - list all
-router.get("/products", async (req, res) => {
-  const products = await Product.find({});
-  res.json(products);
+const router = express.Router();
+
+// GET all products from MongoDB
+router.get("/", async (req, res) => {
+  try {
+    const products = await Product.find({}); // fetches all documents in the collection
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 // GET /search?q=term
 router.get("/search", async (req, res) => {
-  const term = req.query.q || "";
-  
-  const results = await Product.find({
-    name: { $regex: term, $options: "i" },
-  }).limit(5);
+  try {
+    const { q } = req.query; // get the search term from query string
 
-  res.json(results);
+    if (!q) {
+      return res.status(400).json({ message: "Query is required" });
+    }
+
+    // Find products with name matching the query (case-insensitive, partial match)
+    const products = await Product.find({
+      name: { $regex: q, $options: "i" } // i = case-insensitive
+    }).limit(5); // return max 5 results
+
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
 });
+
 
 module.exports = router;

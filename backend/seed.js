@@ -1,0 +1,134 @@
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const Product = require('./models/Product');
+
+const sampleProducts = [
+  {
+    "name": "Wireless Bluetooth Headphones",
+    "category": "Electronics",
+    "price": 1999,
+    "rating": 4.5,
+    "image": "https://www.boat-lifestyle.com/cdn/shop/products/100-wireless-maroon_600x.png?v=1612770156"
+  },
+  {
+    "name": "Smartphone Max 20",
+    "category": "Mobiles",
+    "price": 24999,
+    "rating": 4.3,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Laptop Pro 15",
+    "category": "Computers",
+    "price": 57999,
+    "rating": 4.7,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Wireless Mouse",
+    "category": "Accessories",
+    "price": 499,
+    "rating": 4.2,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "category": "Accessories",
+    "price": 1999,
+    "rating": 4.6,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Smartwatch Ultra",
+    "category": "Wearables",
+    "price": 6999,
+    "rating": 4.4,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Noise Cancelling Earbuds",
+    "category": "Electronics",
+    "price": 2999,
+    "rating": 4.1,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "DSLR Camera X500",
+    "category": "Photography",
+    "price": 45999,
+    "rating": 4.5,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Gaming Monitor 27 Inch",
+    "category": "Electronics",
+    "price": 14999,
+    "rating": 4.4,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Portable Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 1299,
+    "rating": 4.3,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Air Fryer Maxi Heat",
+    "category": "Home Appliances",
+    "price": 4999,
+    "rating": 4.2,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Electric Kettle 1.5L",
+    "category": "Kitchen",
+    "price": 899,
+    "rating": 4.0,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Running Shoes Pro",
+    "category": "Fashion",
+    "price": 1999,
+    "rating": 4.3,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Backpack 30L",
+    "category": "Accessories",
+    "price": 699,
+    "rating": 4.1,
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "name": "Water Bottle Steel 1L",
+    "category": "Kitchen",
+    "price": 399,
+    "rating": 4.2,
+    "image": "https://via.placeholder.com/200"
+  },
+];
+
+const seedDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('Connected to MongoDB');
+    
+    // Clear existing data
+    await Product.deleteMany({});
+    console.log('Cleared existing products');
+    
+    // Insert sample data
+    await Product.insertMany(sampleProducts);
+    console.log('Added sample products');
+    
+    process.exit(0);
+  } catch (error) {
+    console.error('Error seeding database:', error);
+    process.exit(1);
+  }
+};
+
+seedDB();

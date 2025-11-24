@@ -1,0 +1,68 @@
+/* Overlay background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* slightly darker for focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal container */
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+/* Product image */
+.modal-content img {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+  transition: transform 0.2s ease;
+}
+
+.modal-content img:hover {
+  transform: scale(1.05);
+}
+
+/* Close button */
+.modal-content button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.modal-content button:hover {
+  background: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
